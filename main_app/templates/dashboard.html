@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    {% csrf_token %}
+    <h2>Library Dashboard</h2>
+
+    <!-- Available Books -->
+    <h3>Available Books</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Category</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in available_books %}
+            <tr>
+                <td>{{ book.Title }}</td>
+                <td>{{ book.Author }}</td>
+                <td>{{ book.Category }}</td>
+                <td>
+                    <a href="{% url 'borrow_book' book.id %}" class="btn btn-success btn-sm">Borrow</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="4">No books available.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Borrowed Books -->
+    <h3>Borrowed Books</h3>
+    <table class="table table-warning">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Issue Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaction in borrowed_books %}
+            <tr>
+                <td>{{ transaction.book.Title }}</td>
+                <td>{{ transaction.issue_date }}</td>
+                <td>
+                    <a href="{% url 'return_book' transaction.id %}" class="btn btn-danger btn-sm">Return</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="3">No borrowed books.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Transaction History -->
+    <h3>Transaction History</h3>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Book</th>
+                <th>Issue Date</th>
+                <th>Return Date</th>
+                <th>Fine</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaction in transactions %}
+            <tr>
+                <td>{{ transaction.book.Title }}</td>
+                <td>{{ transaction.issue_date }}</td>
+                <td>{{ transaction.return_date|default:"Not Returned" }}</td>
+                <td>{{ transaction.fine }}</td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="4">No transactions yet.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
