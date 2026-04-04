@@ -4,6 +4,11 @@
     {% csrf_token %}
     <h2>Library Dashboard</h2>
 
+    <!-- Add Book Button -->
+    {% if request.user.is_staff %}
+        <a href="{% url 'add_book' %}" class="btn btn-primary">Add New Book</a>
+    {% endif %}
+
     <!-- Available Books -->
     <h3>Available Books</h3>
     <table class="table table-striped">

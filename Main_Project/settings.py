@@ -27,7 +27,7 @@ environ.Env.read_env(os.path.join(BASE_DIR,'.env'))
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     "django-main-project-5m85.onrender.com",
@@ -130,4 +130,13 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIR = [os.path.join(BASE_DIR,"main_app/static")]
+STATICFILES_DIR = [
+    os.path.join(BASE_DIR,"main_app/static")
+    ]
+
+
+# Redirect users to your custom login view
+LOGIN_URL = '/login/'
+
+# After successful login, send them to dashboard
+LOGIN_REDIRECT_URL = '/dashboard/'
