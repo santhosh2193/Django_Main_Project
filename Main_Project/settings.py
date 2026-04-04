@@ -135,6 +135,8 @@ STATICFILES_DIR = [
     os.path.join(BASE_DIR,"main_app/static")
     ]
 
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
 
 # Redirect users to your custom login view
 LOGIN_URL = '/login/'
