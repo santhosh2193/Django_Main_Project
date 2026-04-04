@@ -13,8 +13,8 @@ from django.dispatch import receiver
 
 # Create your views here.
 
-def home(req):
-    return HttpResponse("HIII")
+def home(request):
+    return render(request, 'home.html')
 
 
 

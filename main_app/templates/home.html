@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to LMS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #4a90e2, #9013fe);
+            color: #fff;
+            text-align: center;
+            padding: 100px;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px #000;
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+        .login-btn {
+            background-color: #fff;
+            color: #4a90e2;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .login-btn:hover {
+            background-color: #4a90e2;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Library Management System</h1>
+    <p>Manage books, members, and transactions with ease.</p>
+    <a href="{% url 'login' %}" class="login-btn">Login</a>
+</body>
+</html>
