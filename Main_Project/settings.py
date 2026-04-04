@@ -32,7 +32,8 @@ DEBUG = False
 ALLOWED_HOSTS = [
     "django-main-project-5m85.onrender.com",
     "localhost",
-    "127.0.0.1"
+    "127.0.0.1",
+    "django-main-project-tmza.onrender.com"
 ]
 
 
